@@ -1,0 +1,33 @@
+# JetBrains config files
+**/.idea/
+
+# Secure credentials
+.env
+
+# Node
+**/package-lock.json
+**/node_modules
+
+# Mac system files
+**/.DS_Store*
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
