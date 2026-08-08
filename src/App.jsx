@@ -59,9 +59,9 @@ export default function App() {
             <img src={reactLogo} className="framework" alt="React logo"/>
             <img src={viteLogo} className="vite" alt="Vite logo"/>
           </div>
-          <div>
-            <h1>Get started</h1>
-          </div>
+          {/*<div>*/}
+          {/*  <h1>Get started</h1>*/}
+          {/*</div>*/}
         </section>
         <div id="page">
           <Outlet />
