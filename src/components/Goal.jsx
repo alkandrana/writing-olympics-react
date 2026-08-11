@@ -27,8 +27,41 @@ export default function Goal() {
         e.preventDefault();
         const target = e.target;
         const formData = new FormData(target);
-        const goal = Object.fromEntries(formData.entries());
-        console.log(goal);
+        const session = Object.fromEntries(formData.entries());
+        target.reset();
+        console.log(session);
+        console.log(session.startTime);
+        session.startTime = validateTimeFromForm(session.date, session.startTime);
+        session.stopTime = validateTimeFromForm(session.date, session.stopTime);
+        session.goalId = goalId;
+        const options = {
+            method: "POST",
+            body: JSON.stringify(session),
+            headers: {
+                "Content-Type": "application/json",
+            }
+        };
+        const response = await fetch('http://localhost:5271/sessions', options);
+        const content = await response.json();
+        if (response.ok){
+            console.log("Session successfully created: ", content);
+        } else {
+            console.log("There was a problem creating the session: ", content);
+        }
+        // console.log(session);
+    }
+
+    function validateTimeFromForm(date, time){
+        let value;
+        if (time){
+            console.log("Time found. Constructing full datetime object:");
+            const timeObj = new Date(`${date}T${time}`);
+            value = timeObj.toISOString();
+        } else {
+            console.log("Empty dataset. Assigning null:")
+            value = null;
+        }
+        return value;
     }
 
     const sumSessions = function(total, current){
