@@ -35,7 +35,7 @@ export default function Goals() {
             // counts both today and the day of the deadline as writing days
             days = (days > Math.floor(days) ? Math.ceil(days) : days) + 1;
         }
-        return days + 1;
+        return days;
     }
     return (
         <>
@@ -44,7 +44,7 @@ export default function Goals() {
             <div className="grid grid-cols-3 gap-4">
                 {goals.map((g) => (
                     <div key={g.id} className="bg-purple-950 border-2">
-                        <h2>{g.name}</h2>
+                        <h2><a href={`/goals/${g.id}`} className="text-blue-600 underline">{g.name}</a></h2>
                         <ul>
                             <li>Target: {g.target.toLocaleString()} words</li>
                             <li>Project: {g.project || "any project"}</li>
